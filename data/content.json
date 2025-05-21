@@ -1,0 +1,27 @@
+{
+  "hero": {
+    "title": "Welcome test",
+    "subtitle": "A simple example with admin editing"
+  },
+  "about": {
+    "title": "About Us",
+    "content": "This is a simple example site with admin editing capabilities."
+  },
+  "features": [
+    {
+      "id": 1,
+      "title": "Easy Editing",
+      "description": "Edit your content without coding."
+    },
+    {
+      "id": 2,
+      "title": "No Rebuilds",
+      "description": "Changes are applied without rebuilding the site."
+    },
+    {
+      "id": 3,
+      "title": "Simple Setup",
+      "description": "Minimal configuration required."
+    }
+  ]
+}
