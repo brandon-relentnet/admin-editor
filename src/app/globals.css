@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Primary Colors */
+  --color-primary: #8a5cf7;
+  /* Main brand color for primary buttons, highlights, and key interactive elements */
+  --color-secondary: #ff7d54;
+  /* Complementary color for CTAs, important notifications, and accent elements */
+  --color-accent: #50e3c2;
+  /* Accent color for special highlights and decorative elements */
+
+  /* Background Colors */
+  --color-base: #121318;
+  /* Main background color */
+  --color-mantle: #1a1c23;
+  /* Secondary background for cards, sections, and containers */
+  --color-crust: #24272e;
+  /* Tertiary background for subtle separations and hover states */
+  --color-border: #383c47;
+  /* Default border color */
+
+  /* Text Colors */
+  --color-text: #e2e4ed;
+  /* Primary text color for body content */
+  --color-text-muted: #a0a3b1;
+  /* Secondary text color for labels, captions, and less important content */
+  --color-text-disabled: #63656f;
+  /* Text color for disabled elements */
+
+  /* Interaction States */
+  --color-hover: #2a2d37;
+  /* Element background on hover */
+  --color-focus: #333642;
+  /* Element background when focused */
+
+  /* Feedback Colors */
+  --color-success: #4ecdc4;
+  /* Positive actions, confirmations, and success states */
+  --color-warning: #ffbd44;
+  /* Warnings, important notifications that need attention */
+  --color-error: #ff6b6b;
+  /* Errors, destructive actions, and critical alerts */
+  --color-info: #6cbcff;
+  /* Informational messages and neutral notifications */
+
+  /* Special Purpose Colors */
+  --color-overlay: rgba(13, 14, 18, 0.8);
+  /* Overlay for modals and drawers */
+  --color-link: #a78bfa;
+  /* Hyperlink color */
+  --color-code-bg: #1e202a;
+  /* Background for code snippets */
+  --color-highlight: #3a3e4d;
+  /* Element highlight color */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-base);
+  color: var(--color-text);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.ripple-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  opacity: 0.6;
+  @apply bg-base pointer-events-none rounded-full absolute;
+}
+
+.ripple-button {
+  @apply bg-primary py-2 px-4 rounded text-base cursor-pointer;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }

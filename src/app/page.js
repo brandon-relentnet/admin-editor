@@ -1,8 +1,10 @@
+// src/app/page.js
 import { readFileSync } from "fs";
 import { join } from "path";
-import ClientHome from "../components/ClientHome";
+import { ContentProvider } from "../context/ContentProvider";
+import HomePage from "../components/HomePage";
 
-// This is a Server Component that reads the content and passes it to a Client Component
+// This is a Server Component that reads the content and passes it to the ContentProvider
 export default function Home() {
   // Read the content file in the server component
   const contentPath = join(process.cwd(), "data", "content.json");
@@ -20,7 +22,11 @@ export default function Home() {
     };
   }
 
-  return <ClientHome initialContent={initialContent} />;
+  return (
+    <ContentProvider initialContent={initialContent}>
+      <HomePage />
+    </ContentProvider>
+  );
 }
 
 // This exports a dynamic page that gets revalidated every 10 seconds

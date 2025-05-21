@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "Welcome test",
-    "subtitle": "A simple example with admin editing"
+    "title": "Welcome test 2",
+    "subtitle": "A simple example with admin editing test 2"
   },
   "about": {
     "title": "About Us",
@@ -15,7 +15,7 @@
     },
     {
       "id": 2,
-      "title": "No Rebuilds",
+      "title": "Yes Rebuilds",
       "description": "Changes are applied without rebuilding the site."
     },
     {
@@ -23,5 +23,11 @@
       "title": "Simple Setup",
       "description": "Minimal configuration required."
     }
-  ]
+  ],
+  "counter": {
+    "title": "Counter",
+    "description": "A simple counter that increments on button click.",
+    "button1": "test",
+    "button2": "Decrement"
+  }
 }
