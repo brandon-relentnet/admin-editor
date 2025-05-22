@@ -1,10 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 import { themeChange } from "theme-change";
-import { Bars3Icon, UserCircleIcon } from "@heroicons/react/24/solid";
+import {
+  Bars3Icon,
+  UserCircleIcon,
+  SwatchIcon as SwatchIconSolid,
+} from "@heroicons/react/24/solid";
+import { SwatchIcon as SwatchIconOutline } from "@heroicons/react/24/outline";
 
 export default function Popup() {
-  const [currentTheme, setCurrentTheme] = useState("dark");
   const [subMenuVisible, setSubMenuVisible] = useState(false);
 
   const toggleSubMenu = () => {
@@ -13,9 +17,6 @@ export default function Popup() {
 
   useEffect(() => {
     themeChange(false);
-    setCurrentTheme(
-      document.documentElement.getAttribute("data-theme") || "dark"
-    );
   }, []);
 
   const themes = [
@@ -88,21 +89,46 @@ export default function Popup() {
               className="btn btn-circle drawer-button swap swap-rotate"
             >
               <input type="checkbox" />
-              <Bars3Icon className="swap-off size-6" />
+              <Bars3Icon className="swap-off size-7" />
             </label>
             <a className="btn btn-ghost text-xl">Scrollr</a>
           </div>
 
           <div className="flex-none">
+            <div className="dropdown dropdown-bottom dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn m-1 btn-ghost btn-circle"
+              >
+                <SwatchIconSolid className="size-7" />
+              </div>
+              <div
+                tabIndex={0}
+                className="dropdown-content bg-transparent card card-sm z-1 w-64 overflow-y-auto h-80"
+              >
+                <div className="flex-none join join-vertical shadow-md">
+                  {themes.map(({ label, value }, index) => (
+                    <input
+                      key={index}
+                      type="radio"
+                      name="theme-buttons"
+                      className="btn theme-controller join-item"
+                      aria-label={label}
+                      value={value}
+                      data-set-theme={value}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
                 role="button"
                 className="btn btn-ghost btn-circle avatar"
               >
-                <div className="w-10 rounded-full">
-                  <UserCircleIcon className="w-10 h-10 -ml-0.25 -mt-0.25" />
-                </div>
+                <UserCircleIcon className="size-7" />
               </div>
               <ul
                 tabIndex={0}
@@ -125,37 +151,13 @@ export default function Popup() {
           </div>
         </div>
 
-        <div className="flex overflow-y-auto h-full">
+        <div className="flex h-full">
           <div className="flex flex-1 flex-col items-center justify-center">
             <h1 className="text-3xl font-bold mb-4">Popup Menu</h1>
             <p className="text-lg mb-4">
               This is a simple popup menu example using React and Tailwind CSS.
             </p>
-            <button
-              className="btn btn-primary"
-              onClick={toggleSubMenu}
-              aria-label="Toggle Theme Menu"
-            >
-              Toggle Theme Menu
-            </button>
           </div>
-
-          {subMenuVisible && (
-            <div className="flex-none overflow-y-auto p-4 join join-vertical">
-              {themes.map(({ label, value }, index) => (
-                <input
-                  key={index}
-                  type="radio"
-                  name="theme-buttons"
-                  className="btn theme-controller join-item"
-                  aria-label={label}
-                  value={value}
-                  data-set-theme={value}
-                  defaultChecked={value === currentTheme}
-                />
-              ))}
-            </div>
-          )}
         </div>
       </div>
     </div>
