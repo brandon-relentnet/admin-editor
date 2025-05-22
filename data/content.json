@@ -10,7 +10,7 @@
   "features": [
     {
       "id": 1,
-      "title": "Easy Editing",
+      "title": "Easy Editing chsnge",
       "description": "Edit your content without coding."
     },
     {
@@ -28,6 +28,6 @@
     "title": "Counter",
     "description": "A simple counter that increments on button click.",
     "button1": "test",
-    "button2": "Decrement"
+    "button2": "Decrement t"
   }
 }

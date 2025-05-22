@@ -26,10 +26,6 @@ export default function HomePage() {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <Link href="/admin" className="text-blue-500 text-lg mb-4">
-        Admin
-      </Link>
-
       {/* Hero Section */}
       <header className="my-12 text-center">
         <EditableContent
@@ -49,18 +45,15 @@ export default function HomePage() {
         />
       </header>
 
-      {/* Counter Section */}
+      {/* Button Section */}
       <section className="my-12">
-        <h2 className="text-2xl font-bold mb-6">Counter</h2>
+        <h2 className="text-2xl font-bold mb-6">Buttons</h2>
         <div className="flex items-center justify-center">{count}</div>
-        <button className="btn" onClick={incrementCounter}>
-          <EditableContent
-            isEditing={isEditing}
-            value={content.counter.button1}
-            onChange={(value) => updateContent("counter.button1", value)}
-          />
-        </button>
-        <button className="btn btn-primary" onClick={decrementCounter}>
+        <button className="btn" onClick={incrementCounter}></button>
+        <button
+          className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl btn-success btn-outline"
+          onClick={decrementCounter}
+        >
           <EditableContent
             isEditing={isEditing}
             value={content.counter.button2}
