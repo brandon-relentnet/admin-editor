@@ -4,12 +4,17 @@ import { themeChange } from "theme-change";
 import { Bars3Icon, UserCircleIcon } from "@heroicons/react/24/solid";
 
 export default function Popup() {
-  const [currentTheme, setCurrentTheme] = useState("default");
+  const [currentTheme, setCurrentTheme] = useState("dark");
+  const [subMenuVisible, setSubMenuVisible] = useState(false);
+
+  const toggleSubMenu = () => {
+    setSubMenuVisible((prev) => !prev);
+  };
 
   useEffect(() => {
     themeChange(false);
     setCurrentTheme(
-      document.documentElement.getAttribute("data-theme") || "default"
+      document.documentElement.getAttribute("data-theme") || "dark"
     );
   }, []);
 
@@ -120,19 +125,37 @@ export default function Popup() {
           </div>
         </div>
 
-        <div className="overflow-y-auto py-4 px-20 join join-vertical w-full mx-auto">
-          {themes.map(({ label, value }, index) => (
-            <input
-              key={index}
-              type="radio"
-              name="theme-buttons"
-              className="btn theme-controller join-item"
-              aria-label={label}
-              value={value}
-              data-set-theme={value}
-              defaultChecked={value === currentTheme}
-            />
-          ))}
+        <div className="flex overflow-y-auto h-full">
+          <div className="flex flex-1 flex-col items-center justify-center">
+            <h1 className="text-3xl font-bold mb-4">Popup Menu</h1>
+            <p className="text-lg mb-4">
+              This is a simple popup menu example using React and Tailwind CSS.
+            </p>
+            <button
+              className="btn btn-primary"
+              onClick={toggleSubMenu}
+              aria-label="Toggle Theme Menu"
+            >
+              Toggle Theme Menu
+            </button>
+          </div>
+
+          {subMenuVisible && (
+            <div className="flex-none overflow-y-auto p-4 join join-vertical">
+              {themes.map(({ label, value }, index) => (
+                <input
+                  key={index}
+                  type="radio"
+                  name="theme-buttons"
+                  className="btn theme-controller join-item"
+                  aria-label={label}
+                  value={value}
+                  data-set-theme={value}
+                  defaultChecked={value === currentTheme}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
