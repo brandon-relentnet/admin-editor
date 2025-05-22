@@ -1,57 +1,77 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "catppuccin";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  --color-base-100: var(--color-base);
+  --color-base-200: var(--color-mantle);
+  --color-base-300: var(--color-surface0);
+  --color-base-content: var(--color-text);
+
+  --color-primary: var(--color-pink);
+  --color-primary-content: var(--color-crust);
+
+  --color-secondary: var(--color-mauve);
+  --color-secondary-content: var(--color-crust);
+
+  --color-accent: var(--color-blue);
+  --color-accent-content: var(--color-crust);
+
+  --color-neutral: var(--color-surface1);
+  --color-neutral-content: var(--color-text);
+
+  --color-info: var(--color-sky);
+  --color-info-content: var(--color-crust);
+
+  --color-success: var(--color-green);
+  --color-success-content: var(--color-crust);
+
+  --color-warning: var(--color-yellow);
+  --color-warning-content: var(--color-crust);
+
+  --color-error: var(--color-red);
+  --color-error-content: var(--color-crust);
+
+  --radius-selector: 0.5rem;
+  --radius-field: 2rem;
+  --radius-box: 2rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1.5px;
+  --depth: 0;
+  --noise: 0;
+}
 
 @theme {
-  /* Primary Colors */
-  --color-primary: #8a5cf7;
-  /* Main brand color for primary buttons, highlights, and key interactive elements */
-  --color-secondary: #ff7d54;
-  /* Complementary color for CTAs, important notifications, and accent elements */
-  --color-accent: #50e3c2;
-  /* Accent color for special highlights and decorative elements */
-
-  /* Background Colors */
-  --color-base: #121318;
-  /* Main background color */
-  --color-mantle: #1a1c23;
-  /* Secondary background for cards, sections, and containers */
-  --color-crust: #24272e;
-  /* Tertiary background for subtle separations and hover states */
-  --color-border: #383c47;
-  /* Default border color */
-
-  /* Text Colors */
-  --color-text: #e2e4ed;
-  /* Primary text color for body content */
-  --color-text-muted: #a0a3b1;
-  /* Secondary text color for labels, captions, and less important content */
-  --color-text-disabled: #63656f;
-  /* Text color for disabled elements */
-
-  /* Interaction States */
-  --color-hover: #2a2d37;
-  /* Element background on hover */
-  --color-focus: #333642;
-  /* Element background when focused */
-
-  /* Feedback Colors */
-  --color-success: #4ecdc4;
-  /* Positive actions, confirmations, and success states */
-  --color-warning: #ffbd44;
-  /* Warnings, important notifications that need attention */
-  --color-error: #ff6b6b;
-  /* Errors, destructive actions, and critical alerts */
-  --color-info: #6cbcff;
-  /* Informational messages and neutral notifications */
-
-  /* Special Purpose Colors */
-  --color-overlay: rgba(13, 14, 18, 0.8);
-  /* Overlay for modals and drawers */
-  --color-link: #a78bfa;
-  /* Hyperlink color */
-  --color-code-bg: #1e202a;
-  /* Background for code snippets */
-  --color-highlight: #3a3e4d;
-  /* Element highlight color */
+  --color-rosewater: oklch(92.3% 0.024 30.5);
+  --color-flamingo: oklch(88.0% 0.042 18.0);
+  --color-pink: oklch(87.0% 0.075 336.3);
+  --color-mauve: oklch(78.7% 0.119 304.8);
+  --color-red: oklch(75.6% 0.130 2.8);
+  --color-maroon: oklch(78.2% 0.090 8.8);
+  --color-peach: oklch(82.4% 0.101 52.6);
+  --color-yellow: oklch(91.9% 0.070 86.5);
+  --color-green: oklch(85.8% 0.109 142.7);
+  --color-teal: oklch(85.8% 0.079 182.7);
+  --color-sky: oklch(84.7% 0.083 210.3);
+  --color-sapphire: oklch(79.1% 0.096 228.7);
+  --color-blue: oklch(76.6% 0.111 259.9);
+  --color-lavender: oklch(81.7% 0.091 277.3);
+  --color-text: oklch(87.9% 0.043 272.3);
+  --color-subtext1: oklch(81.7% 0.040 272.9);
+  --color-subtext0: oklch(75.1% 0.040 273.9);
+  --color-overlay2: oklch(68.7% 0.037 274.7);
+  --color-overlay1: oklch(61.8% 0.037 276.0);
+  --color-overlay0: oklch(55.0% 0.034 277.1);
+  --color-surface2: oklch(47.7% 0.034 278.6);
+  --color-surface1: oklch(40.4% 0.032 280.2);
+  --color-surface0: oklch(32.4% 0.032 282.0);
+  --color-base: oklch(24.3% 0.030 283.9);
+  --color-mantle: oklch(21.6% 0.025 284.1);
+  --color-crust: oklch(18.3% 0.020 284.2);
 }
 
 
@@ -59,27 +79,4 @@ body {
   background: var(--color-base);
   color: var(--color-text);
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.ripple-button {
-  position: relative;
-  overflow: hidden;
-}
-
-.ripple {
-  transform: scale(0);
-  animation: ripple 0.6s linear;
-  opacity: 0.6;
-  @apply bg-base pointer-events-none rounded-full absolute;
-}
-
-.ripple-button {
-  @apply bg-primary py-2 px-4 rounded text-base cursor-pointer;
-}
-
-@keyframes ripple {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
 }

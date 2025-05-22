@@ -6,7 +6,6 @@ import { useContent } from "../context/ContentProvider";
 import EditableContent from "./EditableContent";
 import AdminControls from "./AdminControls";
 import { useState } from "react";
-import RippleButton from "./RippleButton";
 
 export default function HomePage() {
   const { content, isEditing, updateContent } = useContent();
@@ -54,20 +53,20 @@ export default function HomePage() {
       <section className="my-12">
         <h2 className="text-2xl font-bold mb-6">Counter</h2>
         <div className="flex items-center justify-center">{count}</div>
-        <button
-          className="bg-blue-500 text-white px-4 py-2 mt-4"
-          onClick={incrementCounter}
-        >
+        <button className="btn" onClick={incrementCounter}>
           <EditableContent
             isEditing={isEditing}
             value={content.counter.button1}
             onChange={(value) => updateContent("counter.button1", value)}
-            className="button-primary"
           />
         </button>
-        <RippleButton onClick={() => console.log("Button clicked!")}>
-          Click Me
-        </RippleButton>
+        <button className="btn btn-primary" onClick={decrementCounter}>
+          <EditableContent
+            isEditing={isEditing}
+            value={content.counter.button2}
+            onChange={(value) => updateContent("counter.button2", value)}
+          />
+        </button>
       </section>
 
       {/* About Section */}
